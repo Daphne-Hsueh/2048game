@@ -1,13 +1,19 @@
 import  {  useContext  } from 'react';
 import { TilesContext } from './TilesContext';
-import { ScoreContext } from './ScoreContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { incrementScore, setBestScore } from '../features/scoreSlice';
 
 export const GameLogic = () => {
 
   const rows = 4
   const columns = 4
   const { tiles, setTiles } = useContext(TilesContext)
-  const {score, setScore , bestScore, setBestScore } = useContext(ScoreContext)
+
+
+    const dispatch = useDispatch();
+    const score = useSelector((state) => state.score.score);
+    const bestScore = useSelector((state) => state.score.bestScore);
+
   const board = [
     [0, 0, 0, 0],
     [0, 0, 0, 0],
@@ -33,7 +39,8 @@ export const GameLogic = () => {
       if (row[i] === row[i+1]) {
         row[i] *= 2;
         row[i+1] = 0;
-        setScore(score + row[i])
+        dispatch(incrementScore(row[i]))
+
       }
     } 
     row = filterZero(row); 

@@ -1,14 +1,18 @@
-import React, {useContext , useEffect,useState} from "react";
-import { TilesContext } from "./TilesContext";
-import { ScoreContext } from './ScoreContext';
+import React, {useContext, useEffect,useState} from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import {resetTile } from '../features/tileSlice'
 import { GameLogic } from "./GameLogic";
-
+import { TilesContext } from './TilesContext';
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const score = useSelector((state) => state.score.score);
+  const bestScore = useSelector((state) => state.score.bestScore);
+  // const tiles = useSelector((state) => state.tile.board)
+   const { tiles, setTiles } = useContext(TilesContext)
 
-  const { tiles, setTiles} = useContext(TilesContext)
-  const {score , bestScore} = useContext(ScoreContext)
-  const {nextTile } = GameLogic ()
+
+  const {nextTile} = GameLogic ()
   const [newGameStarted, setNewGameStarted] = useState(false);
   
   
@@ -19,16 +23,11 @@ const Header = () => {
       nextTile();
       setNewGameStarted(false);
     }
-  }, [tiles, newGameStarted, nextTile]);
+  }, [ tiles,newGameStarted, nextTile]);
 
   const newGame = () => {
-    const board = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-  ]
-    setTiles(board);
+
+    dispatch(resetTile());
     setNewGameStarted(true);
     console.log('NEW GAME START');
   };

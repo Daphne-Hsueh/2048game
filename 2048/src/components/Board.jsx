@@ -1,11 +1,14 @@
-import React, {  useContext , useEffect , useCallback } from 'react';
+import React, { useContext,  useEffect , useCallback } from 'react';
 import { TilesContext } from './TilesContext';
+import { useSelector } from 'react-redux';
 
 import { GameLogic } from './GameLogic';
 
 const Board = () => {
 
-  const { tiles} = useContext(TilesContext)
+
+  // const tiles = useSelector((state) => state.tile.board)
+    const { tiles, setTiles } = useContext(TilesContext)
   const {nextTile , slideLeft , slideRight ,slideUp ,slideDown} = GameLogic ()
   const handleKeyUp = useCallback((e) => {
 
