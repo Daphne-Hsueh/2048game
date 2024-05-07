@@ -1,7 +1,7 @@
 // src/store.js
-import { configureStore } from '@reduxjs/toolkit';
-import scoreReducer from './features/scoreSlice'
-import tileReducer from './features/tileSlice'
+import { configureStore } from "@reduxjs/toolkit";
+import scoreReducer from "./slice/scoreSlice";
+import tileReducer from "./slice/tileSlice";
 
 export const store = configureStore({
   reducer: {
