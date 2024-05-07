@@ -1,11 +1,11 @@
 // src/features/score/scoreSlice.js
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const scoreSlice = createSlice({
-  name: 'score',
+  name: "score",
 
   initialState: {
-    bestScore: parseInt(localStorage.getItem('bestScore')) || 0,
+    bestScore: parseInt(localStorage.getItem("bestScore")) || 0,
     score: 0,
   },
 
@@ -15,7 +15,7 @@ export const scoreSlice = createSlice({
 
       if (action.payload > state.bestScore) {
         state.bestScore = action.payload;
-        localStorage.setItem('bestScore', action.payload);
+        localStorage.setItem("bestScore", action.payload);
       }
     },
 
@@ -25,7 +25,7 @@ export const scoreSlice = createSlice({
 
     setBestScore: (state, action) => {
       state.bestScore = action.payload;
-      localStorage.setItem('bestScore', action.payload);
+      localStorage.setItem("bestScore", action.payload);
     },
 
     resetScore: (state) => {
@@ -34,7 +34,7 @@ export const scoreSlice = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { setScore, incrementScore, setBestScore, resetScore } = scoreSlice.actions;
+export const { setScore, incrementScore, setBestScore, resetScore } =
+  scoreSlice.actions;
 
 export default scoreSlice.reducer;
