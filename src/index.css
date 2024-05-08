@@ -1,6 +1,6 @@
 body {
   background-color: #f7f7e8;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -31,7 +31,6 @@ p {
   font-size: 24px;
 }
 
-
 .scores {
   display: flex;
   align-items: center;
@@ -52,12 +51,11 @@ p {
   padding: 0px 5px;
   height: 30px;
   cursor: pointer;
-
 }
 
 /* board */
 
-.board{
+.board {
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: repeat(1, 1fr);
@@ -70,7 +68,7 @@ p {
   background-color: #bbada0;
 }
 
-.row{
+.row {
   display: grid;
   grid-template-rows: repeat(1, 1fr);
   grid-template-columns: repeat(4, 1fr);
@@ -84,7 +82,7 @@ p {
   border-radius: 5px;
   font-size: 40px;
   font-weight: bold;
-  background-color: #cdc1b5;;
+  background-color: #cdc1b5;
 }
 
 /* tile colors */
