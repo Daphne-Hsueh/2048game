@@ -1,14 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { resetTile } from "../slice/tileSlice";
+import { useSelector } from "react-redux";
 import { GameLogic } from "./GameLogic";
 import { TilesContext } from "./TilesContext";
 
 const Header = () => {
-  const dispatch = useDispatch();
   const score = useSelector((state) => state.score.score);
   const bestScore = useSelector((state) => state.score.bestScore);
-  // const tiles = useSelector((state) => state.tile.board)
   const { tiles, setTiles } = useContext(TilesContext);
 
   const { nextTile } = GameLogic();
